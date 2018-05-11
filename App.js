@@ -5,13 +5,26 @@ export default class App extends React.Component {
 constructor(props){
   super(props);
   this.state = {
-    placeName: ''
+    placeName: '',
+    places: []
   };
 };
 
   placeNameChangedHandler = (val) => {
     this.setState({
       placeName: val
+    });
+  };
+
+  placeSubmitHandler = () => {
+    if (this.state.placeName.trim() === "") {
+      return;
+    }
+
+    this.setState((prevState) => {
+      return {
+        places: prevState.places.concat(prevState.placeName)
+      };
     });
   };
   
@@ -22,12 +35,13 @@ constructor(props){
           <TextInput
           style={styles.placeInput}
           value={this.state.placeName}
-          onChange={this.placeNameChangedHandler}
+          onChangeText={this.placeNameChangedHandler}
           placeholder='Cool Place Here...'
           />
           <Button
             style={styles.placeButton}
             title='Add'
+            onPress={this.placeSubmitHandler}
           />
         </View>
       </View>
