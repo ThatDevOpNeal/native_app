@@ -29,6 +29,9 @@ constructor(props){
   };
   
   render() {
+    const placesOutput = this.state.places.map((place,i) => (
+      <Text key={i}>{place}</Text>
+    ));
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
@@ -43,6 +46,9 @@ constructor(props){
             title='Add'
             onPress={this.placeSubmitHandler}
           />
+        </View>
+        <View>
+          {placesOutput}
         </View>
       </View>
     );
