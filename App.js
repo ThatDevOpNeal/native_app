@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import PlaceInput from "./src/components/PlaceInput/PlaceInput.js";
 import PlaceList from "./src/components/PlaceList/PlaceList.js";
+import placeImage from './src/assets/india-lotus.jpg';
 
 export default class App extends Component {
   state = {
@@ -14,7 +15,8 @@ export default class App extends Component {
       return {
         places: prevState.places.concat({
           key: Date.now(),
-          value: placeName
+          name: placeName,
+          image: placeImage
         })
       };
     });
